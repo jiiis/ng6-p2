@@ -24,3 +24,9 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
+
+export const routingComponents = [
+  UsersComponent,
+  UserComponent,
+  PostsComponent
+];
