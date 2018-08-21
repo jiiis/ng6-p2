@@ -28,4 +28,12 @@ export class UserComponent implements OnInit {
     // Relative navigation.
     this._router.navigate(['../', {id: this.userId}], {relativeTo: this._route});
   }
+
+  goToAddress() {
+    this._router.navigate(['address'], {relativeTo: this._route});
+  }
+
+  goToCompany() {
+    this._router.navigate(['company'], {relativeTo: this._route});
+  }
 }

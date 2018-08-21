@@ -5,5 +5,10 @@
     <li><strong>Email:</strong> {{ user$.email }}</li>
     <li><strong>Phone:</strong> {{ user$.phone }}</li>
   </ul>
+  <div>
+    <button (click)="goToAddress()">Address</button>
+    <button (click)="goToCompany()">Company</button>
+  </div>
+  <router-outlet></router-outlet>
   <button (click)="backToUsers()">Back</button>
 </div>

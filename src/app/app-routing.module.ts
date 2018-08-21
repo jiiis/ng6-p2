@@ -3,6 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {UsersComponent} from './users/users.component';
 import {UserComponent} from './user/user.component';
+import {UserAddressComponent} from './user-address/user-address.component';
+import {UserCompanyComponent} from './user-company/user-company.component';
 import {PostsComponent} from './posts/posts.component';
 
 const routes: Routes = [
@@ -17,7 +19,17 @@ const routes: Routes = [
   },
   {
     path: 'users/:id',
-    component: UserComponent
+    component: UserComponent,
+    children: [
+      {
+        path: 'address',
+        component: UserAddressComponent
+      },
+      {
+        path: 'company',
+        component: UserCompanyComponent
+      }
+    ]
   },
   {
     path: 'posts',
@@ -35,5 +47,7 @@ export class AppRoutingModule {
 export const routingComponents = [
   UsersComponent,
   UserComponent,
+  UserAddressComponent,
+  UserCompanyComponent,
   PostsComponent
 ];
