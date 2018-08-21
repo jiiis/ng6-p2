@@ -8,14 +8,21 @@ import {PostsComponent} from './posts/posts.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/users',
+    pathMatch: 'full'
+  },
+  {
+    path: 'users',
     component: UsersComponent
-  }, {
+  },
+  {
     path: 'users/:id',
     component: UserComponent
-  }, {
+  },
+  {
     path: 'posts',
     component: PostsComponent
-  },
+  }
 ];
 
 @NgModule({
