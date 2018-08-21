@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Params} from '@angular/router/src/shared';
 
 import {IUser} from '../interfaces';
 import {DataService} from '../data.service';
@@ -23,6 +22,10 @@ export class UserComponent implements OnInit {
   }
 
   backToUsers() {
-    this._router.navigate(['/users', {id: this.userId}]);
+    // Absolute navigation.
+    // this._router.navigate(['/users', {id: this.userId}]);
+
+    // Relative navigation.
+    this._router.navigate(['../', {id: this.userId}], {relativeTo: this._route});
   }
 }
