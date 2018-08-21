@@ -1,6 +1,6 @@
 <h1>Users</h1>
 <ul [@list-stagger]="users$">
-  <li *ngFor="let user of users$" [class.selected]="isUserIdSelected(user.id)">
+  <li *ngFor="let user of users$" [class.selected]="isUserSelected(user)">
     <a routerLink="/users/{{ user.id }}">{{ user.name }}</a>
     <ul>
       <li>{{ user.email }}</li>

@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
     this._data.getUsers().subscribe((users: IUser[]) => this.users$ = users);
   }
 
-  isUserIdSelected(userId) {
-    return userId === this.userIdSelected;
+  isUserSelected(user: IUser): boolean {
+    return user.id === this.userIdSelected;
   }
 }
