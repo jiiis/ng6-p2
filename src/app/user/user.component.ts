@@ -23,6 +23,6 @@ export class UserComponent implements OnInit {
   }
 
   backToUsers() {
-    this._router.navigate(['/']);
+    this._router.navigate(['/users', {id: this.userId}]);
   }
 }
