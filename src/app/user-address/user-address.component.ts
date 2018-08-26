@@ -6,8 +6,7 @@ import {UserService} from '../user.service';
 @Component({
   selector: 'app-user-address',
   template: `
-    {{ user | json }}
-    <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
+    <form novalidate #userForm="ngForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="name">Name</label>
         <input
@@ -47,7 +46,7 @@ import {UserService} from '../user.service';
         </select>
         <small [class.is-hidden]="!interestInvalid || interest.untouched">Interest is required.</small>
       </div>
-      <button type="submit">Submit form</button>
+      <button type="submit" [disabled]="userForm.form.invalid">Submit form</button>
       <hr>
       {{ nameInput.className }}
       {{ phoneInput.className }}
