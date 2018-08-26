@@ -6,7 +6,7 @@ import {UserService} from '../user.service';
 @Component({
   selector: 'app-user-address',
   template: `
-    <form #form="ngForm" novalidate>
+    <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
       <input
         type="text"
         name="name"
@@ -24,6 +24,7 @@ import {UserService} from '../user.service';
         #phone="ngModel"
         [class.is-invalid]="phone.invalid && phone.touched"
         [(ngModel)]="user.phone">
+      <button type="submit">Submit form</button>
       <hr>
       {{ nameInput.className }}
       {{ phoneInput.className }}
@@ -41,4 +42,8 @@ export class UserAddressComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  onSubmit() {
+    console.log(111111, this.user);
+  }
 }
