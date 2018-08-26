@@ -25,12 +25,15 @@ import {UserService} from '../user.service';
           type="tel"
           name="phone"
           required
-          pattern="^\d{3}$"
+          pattern="^\d{10}$"
           #phoneInput
           #phone="ngModel"
           [class.is-invalid]="phone.invalid && phone.touched"
           [(ngModel)]="user.phone">
-        <small [class.is-hidden]="phone.valid || phone.untouched">Phone is required.</small>
+        <div *ngIf="phone.errors && phone.touched">
+          <small *ngIf="phone.errors.required">Phone number is required.</small>
+          <small *ngIf="phone.errors.pattern">Phone number must be 10 digits.</small>
+        </div>
       </div>
       <button type="submit">Submit form</button>
       <hr>
