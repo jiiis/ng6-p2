@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   users: IUser[];
   userIdSelected: number;
 
-  constructor(private _route: ActivatedRoute, private _data: DataService) {
+  constructor(private _route: ActivatedRoute, private _dataService: DataService) {
     this._route.paramMap.subscribe((paramMap: ParamMap) => {
       const paramId = parseInt(paramMap.get('id'), 10);
 
@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._data.getUsers().subscribe((users: IUser[]) => this.users = users);
+    this._dataService.getUsers().subscribe((users: IUser[]) => this.users = users);
   }
 
   isUserSelected(user: IUser): boolean {

@@ -13,12 +13,12 @@ export class UserComponent implements OnInit {
   userId: string;
   user: IUser;
 
-  constructor(private _router: Router, private _route: ActivatedRoute, private _data: DataService) {
+  constructor(private _router: Router, private _route: ActivatedRoute, private _dataService: DataService) {
     this._route.paramMap.subscribe((paramMap: ParamMap) => this.userId = paramMap.get('id'));
   }
 
   ngOnInit() {
-    this._data.getUser(this.userId).subscribe((user: IUser) => this.user = user);
+    this._dataService.getUser(this.userId).subscribe((user: IUser) => this.user = user);
   }
 
   backToUsers() {

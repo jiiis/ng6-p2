@@ -15,9 +15,9 @@ import {DataService} from '../data.service';
 export class PostsComponent implements OnInit {
   posts: IPost[];
 
-  constructor(private _data: DataService) {}
+  constructor(private _dataService: DataService) {}
 
   ngOnInit() {
-    this._data.getPosts().subscribe((posts: IPost[]) => this.posts = posts);
+    this._dataService.getPosts().subscribe((posts: IPost[]) => this.posts = posts);
   }
 }
