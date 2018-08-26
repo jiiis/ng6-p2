@@ -14,7 +14,7 @@ import {DataService} from '../data.service';
   ]
 })
 export class UsersComponent implements OnInit {
-  users$: IUser[];
+  users: IUser[];
   userIdSelected: number;
 
   constructor(private _route: ActivatedRoute, private _data: DataService) {
@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._data.getUsers().subscribe((users: IUser[]) => this.users$ = users);
+    this._data.getUsers().subscribe((users: IUser[]) => this.users = users);
   }
 
   isUserSelected(user: IUser): boolean {

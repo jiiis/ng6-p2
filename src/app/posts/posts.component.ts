@@ -13,11 +13,11 @@ import {DataService} from '../data.service';
   ]
 })
 export class PostsComponent implements OnInit {
-  posts$: IPost[];
+  posts: IPost[];
 
   constructor(private _data: DataService) {}
 
   ngOnInit() {
-    this._data.getPosts().subscribe((posts: IPost[]) => this.posts$ = posts);
+    this._data.getPosts().subscribe((posts: IPost[]) => this.posts = posts);
   }
 }
