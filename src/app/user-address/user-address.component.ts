@@ -6,6 +6,7 @@ import {UserService} from '../user.service';
 @Component({
   selector: 'app-user-address',
   template: `
+    {{ user | json }}
     <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="name">Name</label>
@@ -35,6 +36,12 @@ import {UserService} from '../user.service';
           <small *ngIf="phone.errors.pattern">Phone number must be 10 digits.</small>
         </div>
       </div>
+      <div>
+        <select name="interest">
+          <option>I am interested in...</option>
+          <option *ngFor="let interest of interests">{{ interest }}</option>
+        </select>
+      </div>
       <button type="submit">Submit form</button>
       <hr>
       {{ nameInput.className }}
@@ -47,6 +54,11 @@ import {UserService} from '../user.service';
 })
 export class UserAddressComponent implements OnInit {
   user: IUser;
+  interests: string[] = [
+    'React',
+    'Angular',
+    'Vue'
+  ];
 
   constructor(_userService: UserService) {
     _userService.user$.subscribe((user: IUser) => this.user = user);
