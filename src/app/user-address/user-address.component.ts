@@ -7,23 +7,31 @@ import {UserService} from '../user.service';
   selector: 'app-user-address',
   template: `
     <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
-      <input
-        type="text"
-        name="name"
-        required
-        #nameInput
-        #name="ngModel"
-        [class.is-invalid]="name.invalid && name.touched"
-        [(ngModel)]="user.name">
-      <input
-        type="tel"
-        name="phone"
-        required
-        pattern="^\d{3}$"
-        #phoneInput
-        #phone="ngModel"
-        [class.is-invalid]="phone.invalid && phone.touched"
-        [(ngModel)]="user.phone">
+      <div>
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          required
+          #nameInput
+          #name="ngModel"
+          [class.is-invalid]="name.invalid && name.touched"
+          [(ngModel)]="user.name">
+        <small [class.is-hidden]="name.valid || name.untouched">Name is required.</small>
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          name="phone"
+          required
+          pattern="^\d{3}$"
+          #phoneInput
+          #phone="ngModel"
+          [class.is-invalid]="phone.invalid && phone.touched"
+          [(ngModel)]="user.phone">
+        <small [class.is-hidden]="phone.valid || phone.untouched">Phone is required.</small>
+      </div>
       <button type="submit">Submit form</button>
       <hr>
       {{ nameInput.className }}
