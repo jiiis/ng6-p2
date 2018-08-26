@@ -39,13 +39,13 @@ import {UserService} from '../user.service';
       <div>
         <select
           name="interest"
-          required
           #interest="ngModel"
-          [(ngModel)]="user.interest">
-          <option value="">I am interested in...</option>
+          [(ngModel)]="user.interest"
+          (blur)="validateInterest(interest.value)">
+          <option value="default">I am interested in...</option>
           <option *ngFor="let interest of interests">{{ interest }}</option>
         </select>
-        <small [class.is-hidden]="interest.valid || interest.untouched">Interest is required.</small>
+        <small [class.is-hidden]="!interestInvalid || interest.untouched">Interest is required.</small>
       </div>
       <button type="submit">Submit form</button>
       <hr>
@@ -64,12 +64,17 @@ export class UserAddressComponent implements OnInit {
     'Angular',
     'Vue'
   ];
+  interestInvalid = true;
 
   constructor(_userService: UserService) {
     _userService.user$.subscribe((user: IUser) => this.user = user);
   }
 
   ngOnInit() {}
+
+  validateInterest(interest) {
+    this.interestInvalid = !interest || interest === 'default';
+  }
 
   onSubmit() {
     console.log(111111, this.user);
