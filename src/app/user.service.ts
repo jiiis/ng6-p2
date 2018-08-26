@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ReplaySubject, Subject} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 import {IUser} from './interfaces';
 import {filter} from 'rxjs/internal/operators';
 
