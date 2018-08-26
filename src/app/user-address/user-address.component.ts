@@ -46,7 +46,7 @@ import {UserService} from '../user.service';
         </select>
         <small [class.is-hidden]="!interestInvalid || interest.untouched">Interest is required.</small>
       </div>
-      <button type="submit" [disabled]="userForm.form.invalid">Submit form</button>
+      <button type="submit" [disabled]="userForm.form.invalid || interestInvalid">Submit form</button>
       <hr>
       {{ nameInput.className }}
       {{ phoneInput.className }}
