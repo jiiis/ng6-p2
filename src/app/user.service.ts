@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {ReplaySubject, Subject} from 'rxjs';
 import {IUser} from './interfaces';
 import {filter} from 'rxjs/internal/operators';
 
 @Injectable()
 export class UserService {
-  private userSubject: Subject<IUser> = new Subject<IUser>();
+  private userSubject: ReplaySubject<IUser> = new ReplaySubject<IUser>();
 
   constructor() {}
 
@@ -15,7 +15,7 @@ export class UserService {
     );
   }
 
-  setUser(user: IUser) {
+  setUser(user: IUser): void {
     this.userSubject.next(user);
   }
 }

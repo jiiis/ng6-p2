@@ -3,22 +3,32 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import {IUser} from '../interfaces';
 import {DataService} from '../data.service';
+import {UserService} from '../user.service';
 
 @Component({
+  providers: [UserService],
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.less']
+  styleUrls: ['./user.component.less'],
 })
 export class UserComponent implements OnInit {
   userId: string;
   user: IUser;
 
-  constructor(private _router: Router, private _route: ActivatedRoute, private _dataService: DataService) {
+  constructor(
+    private _router: Router,
+    private _route: ActivatedRoute,
+    private _dataService: DataService,
+    private _userService: UserService
+  ) {
     this._route.paramMap.subscribe((paramMap: ParamMap) => this.userId = paramMap.get('id'));
   }
 
   ngOnInit() {
-    this._dataService.getUser(this.userId).subscribe((user: IUser) => this.user = user);
+    this._dataService.getUser(this.userId).subscribe((user: IUser) => {
+      this.user = user;
+      this._userService.setUser(user);
+    });
   }
 
   backToUsers() {

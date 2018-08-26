@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import {IUser} from '../interfaces';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-user-address',
   template: `
-    <p>
-      user-address works!
-    </p>
+    <p>{{ user | json }}</p>
   `,
   styles: []
 })
 export class UserAddressComponent implements OnInit {
+  user: IUser;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(_userService: UserService) {
+    _userService.user$.subscribe((user: IUser) => this.user = user);
   }
 
+  ngOnInit() {}
 }
