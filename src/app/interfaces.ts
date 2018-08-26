@@ -26,6 +26,7 @@ interface IUser {
   phone: string;
   website: string;
   company: ICompany;
+  interest: string;
 }
 
 interface IPost {

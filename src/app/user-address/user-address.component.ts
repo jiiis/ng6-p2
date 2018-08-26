@@ -37,10 +37,15 @@ import {UserService} from '../user.service';
         </div>
       </div>
       <div>
-        <select name="interest">
-          <option>I am interested in...</option>
+        <select
+          name="interest"
+          required
+          #interest="ngModel"
+          [(ngModel)]="user.interest">
+          <option value="">I am interested in...</option>
           <option *ngFor="let interest of interests">{{ interest }}</option>
         </select>
+        <small [class.is-hidden]="interest.valid || interest.untouched">Interest is required.</small>
       </div>
       <button type="submit">Submit form</button>
       <hr>
