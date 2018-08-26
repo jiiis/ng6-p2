@@ -6,7 +6,7 @@ import {UserService} from '../user.service';
 @Component({
   selector: 'app-user-address',
   template: `
-    <form #form="ngForm">
+    <form #form="ngForm" novalidate>
       <input
         type="text"
         name="name"
